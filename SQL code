@@ -1,0 +1,61 @@
+-- 1. Create Database
+CREATE DATABASE number_game;
+
+-- 2. Use Database
+USE number_game;
+
+-- 3. Create Table
+CREATE TABLE game (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player_name VARCHAR(50),
+    secret_number INT,
+    guessed_number INT,
+    attempts INT,
+    result VARCHAR(20)
+);
+
+-- 4. Insert 10 Players
+INSERT INTO game
+(player_name, secret_number, guessed_number, attempts, result)
+VALUES
+('Rahul', 25, 20, 3, 'Lost'),
+('Ananya', 15, 15, 2, 'Won'),
+('Arjun', 40, 35, 5, 'Lost'),
+('Sneha', 10, 10, 1, 'Won'),
+('Kiran', 50, 45, 4, 'Lost'),
+('Priya', 30, 30, 3, 'Won'),
+('Rohan', 75, 70, 6, 'Lost'),
+('Neha', 60, 60, 2, 'Won'),
+('Vikram', 90, 85, 5, 'Lost'),
+('Meena', 35, 35, 3, 'Won');
+
+-- 5. Display All Players
+SELECT * FROM game;
+
+-- 6. Display Winners
+SELECT * FROM game
+WHERE result = 'Won';
+
+-- 7. Display Losers
+SELECT * FROM game
+WHERE result = 'Lost';
+
+-- 8. Count Total Players
+SELECT COUNT(*) AS total_players
+FROM game;
+
+-- 9. Count Winners
+SELECT COUNT(*) AS total_winners
+FROM game
+WHERE result = 'Won';
+
+-- 10. Count Losers
+SELECT COUNT(*) AS total_losers
+FROM game
+WHERE result = 'Lost';
+
+-- 11. Find the Player With Least Attempts
+SELECT *
+FROM game
+ORDER BY attempts ASC
+LIMIT 1;
